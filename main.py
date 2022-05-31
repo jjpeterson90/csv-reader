@@ -16,10 +16,8 @@ class Animal_Info:
                 
     def get_animal_info(self):
         with open(f'data/{self.request}.csv') as csvfile:
-            csv_reader = csv.reader(csvfile, skipinitialspace=True)
-            next(csv_reader) # skip the header row
-            animals_list = []
+            csv_reader = csv.DictReader(csvfile, skipinitialspace=True)
             for each_animal in csv_reader:
-                print(f"{each_animal[0]} is a {each_animal[1]} year old {each_animal[2]}")
+                print(f"{each_animal['name']} is a {each_animal['age']} year old {each_animal['breed']}")
                 
 Animal_Info()
